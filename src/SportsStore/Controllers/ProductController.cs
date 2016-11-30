@@ -45,9 +45,9 @@ namespace SportsStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, ProductEditViewModel productEditViewModel)
+        public IActionResult Edit( ProductEditViewModel productEditViewModel)
         {
-            Product product = _productRepository.GetById(id);
+            Product product = _productRepository.GetById(productEditViewModel.ProductId);
             MapToProduct(productEditViewModel, product);
             _productRepository.SaveChanges();
             return RedirectToAction(nameof(Index));
